@@ -1,24 +1,23 @@
+import {Backdrop, ModalWindow, ModalButton} from './modal.styled'
+
+
 const Modal = ({ children, closeModal }) => {
 	return (
-		<div
-			className='modal fade show'
-			style={{ display: 'block', backdropFilter: 'blur(5px)' }}
-		>
-			<div className='modal-dialog'>
+		<Backdrop>
+			<ModalWindow>
 				<div className='modal-content'>
 					<div className='modal-header'>
-						<h5 className='modal-title'> Modal</h5>
-						<button
+						<h2 className='modal-title'> Modal</h2>
+						<ModalButton
 							type='button'
-							className='btn-close'
 							aria-label='Close'
 							onClick={closeModal}
-						></button>
+						>Close</ModalButton>
 					</div>
 					<div className='modal-body'>{children}</div>
 				</div>
-			</div>
-		</div>
+			</ModalWindow>
+		</Backdrop>
 	)
 }
 

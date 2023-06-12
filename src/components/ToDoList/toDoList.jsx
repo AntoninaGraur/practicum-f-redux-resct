@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ToDo from '../ToDo/toDo'
 import todo from '../../todo.json'
 
+import {UlListToDo} from './toDoList.styled'
+
 class ToDoList extends Component {
 	state = {
 		todoList: todo,
@@ -25,7 +27,7 @@ class ToDoList extends Component {
 		return (
 			<>
 				<h1>My To-Do list</h1>
-				<ul className='list-group list-group-flush'>
+				<UlListToDo>
 					{this.state.todoList.map((todo) => (
 						<ToDo
 							key={todo.id}
@@ -34,7 +36,7 @@ class ToDoList extends Component {
 							handleDelete={this.handleDelete}
 						/>
 					))}
-				</ul>
+				</UlListToDo>
 			</>
 		)
 	}

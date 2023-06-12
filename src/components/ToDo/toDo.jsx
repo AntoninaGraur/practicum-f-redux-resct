@@ -1,3 +1,6 @@
+
+import {BtnDeleteToDO} from './toDo.styled'
+
 import React from 'react'
 
 const ToDo = ({ todo, handleCheckCompleted, handleDelete }) => {
@@ -14,12 +17,12 @@ const ToDo = ({ todo, handleCheckCompleted, handleDelete }) => {
 					{todo.title}
 				</div>
 				<div className='col'>
-					<button
+					<BtnDeleteToDO
 						type='button'
 						className='btn-close'
 						aria-label='Close'
 						onClick={() => handleDelete(todo.id)}
-					></button>
+					>Delete</BtnDeleteToDO>
 				</div>
 			</div>
 		</li>
