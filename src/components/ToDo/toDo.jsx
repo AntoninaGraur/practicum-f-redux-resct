@@ -22,7 +22,7 @@ const ToDo = ({ todo, handleCheckCompleted, handleDelete }) => {
 						className='btn-close'
 						aria-label='Close'
 						onClick={() => handleDelete(todo.id)}
-					>Delete</BtnDeleteToDO>
+					></BtnDeleteToDO>
 				</div>
 			</div>
 		</li>
