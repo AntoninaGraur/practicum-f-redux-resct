@@ -16,7 +16,7 @@ export const NavSpan = styled.span`
 `;
 export const NavButton = styled.button`
   font-size: 14px;
-  width: 100px;
+  width: 110px;
   height: 40px;
   border: none;
   border-radius: 14px;
@@ -28,5 +28,5 @@ export const NavButton = styled.button`
     background-color: gray;
    
     box-shadow: 0cap;
-    transform: scale(1.1);
+    transform: all scale(1.1);
   }`;
