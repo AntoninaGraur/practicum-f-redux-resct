@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/practicum-f-redux-resct/static/css/main.b5320759.css",
-    "main.js": "/practicum-f-redux-resct/static/js/main.0ee80c4d.js",
+    "main.js": "/practicum-f-redux-resct/static/js/main.5d6445cf.js",
     "index.html": "/practicum-f-redux-resct/index.html",
     "main.b5320759.css.map": "/practicum-f-redux-resct/static/css/main.b5320759.css.map",
-    "main.0ee80c4d.js.map": "/practicum-f-redux-resct/static/js/main.0ee80c4d.js.map"
+    "main.5d6445cf.js.map": "/practicum-f-redux-resct/static/js/main.5d6445cf.js.map"
   },
   "entrypoints": [
     "static/css/main.b5320759.css",
-    "static/js/main.0ee80c4d.js"
+    "static/js/main.5d6445cf.js"
   ]
 }
