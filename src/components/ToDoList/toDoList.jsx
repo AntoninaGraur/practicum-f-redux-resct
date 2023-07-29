@@ -3,6 +3,9 @@ import ToDo from '../ToDo/toDo'
 import todo from '../../todo.json'
 
 import {UlListToDo} from './toDoList.styled'
+import FormToDo from 'components/FormToDo/FormToDo';
+
+import { nanoid } from 'nanoid';
 
 class ToDoList extends Component {
 	state = {
@@ -23,10 +26,18 @@ class ToDoList extends Component {
 		}))
 	}
 
+	addToDo = (value) => {
+		this.setState((prev) => {
+			return {
+				todoList: [...prev.todoList, { "id": nanoid(), "title": value, "completed": false}]
+			}
+		})
+	}
 	render() {
 		return (
 			<>
 				<h1>My To-Do list</h1>
+				<FormToDo addToDo={ this.addToDo} />
 				<UlListToDo>
 					{this.state.todoList.map((todo) => (
 						<ToDo

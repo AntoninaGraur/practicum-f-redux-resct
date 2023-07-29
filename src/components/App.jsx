@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import Header from './Header/header';
 // import Counter from './Counter/Counter'
 import ToDoList from './ToDoList/toDoList';
@@ -6,12 +5,15 @@ import Modal from './Modal/modal';
 import LoginForm from './LoginForm/LoginForm';
 import { nanoid } from 'nanoid';
 // import Counter from './Counter/counter'
+import { Component } from 'react';
+
+
 
 class App extends Component {
   state = {
     isShowModal: false,
   };
-
+  
   showModal = () => {
     this.setState({ isShowModal: true });
   };
