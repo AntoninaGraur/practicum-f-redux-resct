@@ -4,9 +4,9 @@ export const UlListToDo = styled.ul`
   margin: 20px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   row-gap: 15px;
 `;
