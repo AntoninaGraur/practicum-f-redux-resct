@@ -2,26 +2,35 @@ import ErrorCard from '../ErrorCard/ErrorCard';
 import { Component } from 'react';
 import { getNews } from 'services/getNews';
 
+
+const STATUS = {
+    IDLE: 'idle',
+    PENDING: 'pending',
+    REJECTED: 'rejected',
+    RESOLVED: 'resolve',
+}
+
 class ContentInfo extends Component {
   state = {
     news: null,
     // isLoading: false,
     error: '',
-    status: 'idle',
+    status: STATUS.IDLE,
   };
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.searchText !== this.props.searchText) {
-      this.setState({ status: 'pending' });
-      getNews(this.props.searchText)
+      if (prevProps.searchText !== this.props.searchText) {
+      this.setState({ status: STATUS.PENDING});
+          getNews(this.props.searchText)
+          
         .then(response => response.json())
         .then(data => {
           if (data.status === 'ok')
-            this.setState({ news: data.articles, status: 'resolved' });
+            this.setState({ news: data.articles, status: STATUS.RESOLVED });
           else return Promise.reject(data.message);
         })
         .catch(error => {
           console.log('error', error);
-          this.setState({ error, status: 'rejected' });
+          this.setState({ error, status: STATUS.REJECTED });
         });
       // .finally(() => {
       //   this.setState({ isLoading: false });
