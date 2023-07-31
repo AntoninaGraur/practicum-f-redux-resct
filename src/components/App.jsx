@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div className="container">
         <Header showModal={this.showModal} />
-        <Search />
+        <Search handleSearch={ this.handleSearch} />
         <ContentInfo searchText={this.state.searchText} />
         {/* <Counter /> */}
         {/* <ToDoList />
