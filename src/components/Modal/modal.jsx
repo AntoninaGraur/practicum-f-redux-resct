@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 const Modal = ({ closeModal, children }) => {
   useEffect(() => {
     const handlePressESC = e => {
-      console.log('object', Date.now());
+     
       if (e.code === 'Escape') closeModal();
     };
     window.addEventListener('keydown', handlePressESC);
