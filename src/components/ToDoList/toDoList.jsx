@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ToDo from '../ToDo/toDo';
-import todo from '../../todo.json';
+// import todo from '../../todo.json';
 
 import { UlListToDo } from './toDoList.styled';
 import FormToDo from 'components/FormToDo/FormToDo';
