@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ToDo from '../ToDo/toDo';
-// import todo from '../../todo.json';
+
+import toast from 'react-hot-toast';
 
 import { UlListToDo } from './toDoList.styled';
 import FormToDo from 'components/FormToDo/FormToDo';
@@ -9,62 +10,53 @@ import { nanoid } from 'nanoid';
 
 const ToDoList = () => {
   const [todoList, setTodoList] = useState('');
-  const [isDelete, setIsDelete] = useState(false);
-  const [isCreate, setIsCreate] = useState(false);
 
+  useEffect(() => {
+    const localTodo = localStorage.getItem('todo');
+    if (localTodo) setTodoList(JSON.parse(localTodo));
+  }, []);
+
+  useEffect(() => {
+    todoList && localStorage.setItem('todo', JSON.stringify(todoList));
+  }, [todoList]);
 
   const handleCheckCompleted = id => {
-    setTodoList((prevState) => {
-    prevState.todoList.map((todo) =>
+    setTodoList(prevTodoList => {
+      return prevTodoList.map(todo =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-  })
-    // this.setState(prevState => ({
-    //   todoList: prevState.todoList.map(todo =>
-    //     todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    //   ),
-    // }));
-  };
-
- const handleDelete = id => {
-    this.setState(prev => ({
-      todoList: prev.todoList.filter(todo => todo.id !== id),
-    }));
-  };
-
- const addToDo = value => {
-    this.setState(prev => {
-      return {
-        todoList: [
-          ...prev.todoList,
-          { id: nanoid(), title: value, completed: false },
-        ],
-      };
+      );
     });
+  };
+
+  const handleDelete = id => {
+    setTodoList(prevTodoList => {
+      return prevTodoList.filter(todo => todo.id !== id);
+    });
+    toast.error('Successfully deleted');
+  };
+
+  const addToDo = value => {
+    setTodoList(prevTodoList => {
+      return [
+        ...prevTodoList,
+        { id: nanoid(), title: value, completed: false },
+      ];
+    });
+    toast.success('Successfully added to list');
   };
 
   return (
     <>
       <h1>My To-Do list</h1>
-      {isDelete && (
-        <div className="alert alert-warning" role="alert">
-          To Do Succsessfully deleted!
-        </div>
-      )}
-      {isCreate && (
-        <div className="alert alert-success" role="alert">
-          Create is Succsessfully!
-        </div>
-      )}
-      <FormToDo addToDo={this.addToDo} />{' '}
-      {this.state.todoList && (
+      <FormToDo addToDo={addToDo} />
+      {todoList && (
         <UlListToDo>
           {todoList.map(todo => (
             <ToDo
               key={todo.id}
               todo={todo}
               handleCheckCompleted={handleCheckCompleted}
-              handleDelete={this.handleDelete}
+              handleDelete={handleDelete}
             />
           ))}
         </UlListToDo>
@@ -97,9 +89,9 @@ export default ToDoList;
 //         this.setState({ isDelete: false });
 //       }, 1500);
 //     }
-//     if (prevState.todoList.length < this.state.todoList.length) {
-//       localStorage.setItem('todo', JSON.stringify(this.state.todoList));
-//       this.setState({ isCreate: true, todo: localStorage.getItem('todo') });
+// if (prevState.todoList.length < this.state.todoList.length) {
+//   localStorage.setItem('todo', JSON.stringify(this.state.todoList));
+//   this.setState({ isCreate: true, todo: localStorage.getItem('todo') });
 //       setTimeout(() => {
 //         this.setState({ isCreate: false });
 //       }, 2500);

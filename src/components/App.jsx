@@ -1,7 +1,6 @@
+import React from 'react';
 import Header from './Header/header';
-
-
-// import ToDoList from './ToDoList/toDoList';
+import ToDoList from './ToDoList/toDoList';
 import Modal from './Modal/modal';
 import LoginForm from './LoginForm/LoginForm';
 import { nanoid } from 'nanoid';
@@ -9,8 +8,7 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import Search from './Search/Search';
 import ContentInfo from './ContentInfo/ContentInfo';
-
-import React from 'react';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -19,25 +17,34 @@ const App = () => {
   const showModal = () => setIsShowModal(true);
   const closeModal = () => setIsShowModal(false);
   function createUser(data) {
-    
     const newUser = {
       ...data,
       id: nanoid(),
-    }
+    };
     console.log('newUser:>>', newUser);
   }
 
   const handleSearch = searchText => {
-    setSearchText(searchText)
+    setSearchText(searchText);
   };
 
   return (
     <div className="container">
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+        }}
+      />
       <Header showModal={showModal} />
       <Search handleSearch={handleSearch} />
       <ContentInfo searchText={searchText} />
       {/* <Counter /> */}
-      {/* <ToDoList /> */}
+      <ToDoList />
       {isShowModal && (
         <Modal closeModal={closeModal}>
           <LoginForm createUser={createUser} closeModal={closeModal} />
