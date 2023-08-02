@@ -1,6 +1,6 @@
 import Header from './Header/header';
 
-// eslint-disable-next-line no-unused-vars
+
 import ToDoList from './ToDoList/toDoList';
 import Modal from './Modal/modal';
 import LoginForm from './LoginForm/LoginForm';
@@ -37,7 +37,7 @@ const App = () => {
       <Search handleSearch={handleSearch} />
       <ContentInfo searchText={searchText} />
       {/* <Counter /> */}
-      {/* <ToDoList /> */}
+      <ToDoList />
       {isShowModal && (
         <Modal closeModal={closeModal}>
           <LoginForm createUser={createUser} closeModal={closeModal} />
