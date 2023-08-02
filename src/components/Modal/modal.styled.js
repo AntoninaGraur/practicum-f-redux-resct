@@ -14,25 +14,25 @@ export const ModalWindow = styled.div`
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background-color: var(--modal-wndw-clr);
+    background-color: lightskyblue;
     max-width: 408px;
     min-height: 576px;
     width: 100%;
-    border-radius: 4px;
-    padding: 72px 24px 24px 24px;
+    border-radius: 20px;
+    padding: 35px 24px 24px 24px;
 `
 export const ModalButton = styled.button`
   font-size: 14px;
   width: 100px;
   height: 40px;
   border: none;
-  border-radius: 14px;
+  border-radius: 24px;
   background-color: #0c290a;
   color: white;
   cursor: pointer;
   transition: all ease-in-out 0.4s;
   &:hover {
-    background-color: gray;
+    background-color: lightseagreen;
     color: navy;
 
     box-shadow: 0cap;
